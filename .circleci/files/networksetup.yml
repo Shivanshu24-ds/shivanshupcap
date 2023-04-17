@@ -8,7 +8,7 @@ metadata:
   name: capstone-service
   namespace: default
   labels:
-    app: aamirscap
+    app: shivanshupcap
 spec:
   ports:
     - port: 80
@@ -16,4 +16,4 @@ spec:
       protocol: TCP
   type: LoadBalancer
   selector:
-    app: aamirscap
+    app: shivanshupcap

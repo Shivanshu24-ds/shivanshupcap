@@ -59,7 +59,7 @@ jobs:
       - run:
           name: Docker Image - Build
           command: |
-            docker build --tag=aamirscap .
+            docker build --tag=shivanshupcap .
       - run:
           name: Docker Image - List
           command: |
@@ -70,8 +70,8 @@ jobs:
             docker login -u="${DOCKER_LOGIN}" -p="${DOCKER_PASS}"
             echo 'Welcome to DockerHub!!!'
 
-            TAG=aamirscap
-            dockerpath=aamirsyper/aamirscap
+            TAG=shivanshupcap
+            dockerpath=shivanshup/shivanshupcap
 
             docker tag $TAG $dockerpath
             docker push $dockerpath
@@ -83,7 +83,7 @@ jobs:
     parameters:
       cluster-name:
         description: |
-          aamirscap
+          shivanshupcap
         type: string
     steps:
       - checkout
@@ -93,7 +93,7 @@ jobs:
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           resource-file-path: .circleci/files/resourcesetup.yml
-          resource-name: deployment/aamirscap
+          resource-name: deployment/shivanshupcap
           get-rollout-status: true
       - kubernetes/create-or-update-resource:
           resource-file-path: ".circleci/files/networksetup.yml"
@@ -102,5 +102,5 @@ workflows:
   default:
     jobs:   
        - aws-eks/delete-cluster:
-            cluster-name: aamirscap            
+            cluster-name: shivanshupcap            
        

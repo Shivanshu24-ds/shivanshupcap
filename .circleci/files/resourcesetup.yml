@@ -6,15 +6,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aamirscap
+  name: shivanshupcap
   namespace: default
   labels:
-    app: aamirscap
+    app: shivanshupcap
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: aamirscap
+      app: shivanshupcap
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -23,10 +23,10 @@ spec:
   template:
     metadata:
       labels:
-        app: aamirscap
+        app: shivanshupcap
     spec:
       containers:
-        - image: aamirsyper/aamirscap
+        - image: shivanshup/shivanshupcap
           imagePullPolicy: Always
           name: capstone
           ports:
