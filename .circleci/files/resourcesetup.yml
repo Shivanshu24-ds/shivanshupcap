@@ -31,3 +31,4 @@ spec:
           name: capstone
           ports:
             - containerPort: 80
+
