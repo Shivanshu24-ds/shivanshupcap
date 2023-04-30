@@ -98,9 +98,27 @@ jobs:
       - kubernetes/create-or-update-resource:
           resource-file-path: ".circleci/files/networksetup.yml"
 
+#workflows:
+  #default:
+    #jobs:   
+       #- aws-eks/delete-cluster:
+            #cluster-name: shivanshupcap
 workflows:
   default:
-    jobs:   
-       - aws-eks/delete-cluster:
-            cluster-name: shivanshupcap            
+    jobs:
+       - build
+       - Build-Docker-image-and-push:
+            requires: 
+              - build          
+       - aws-eks/create-cluster:
+            cluster-name: shivanshupcap
+            requires: 
+              - Build-Docker-image-and-push
+       - create-deployment:
+            cluster-name: shivanshupcap
+            requires:
+              - build
+              - Build-Docker-image-and-push
+              - aws-eks/create-cluster            
+                      
        
